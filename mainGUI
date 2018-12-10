@@ -1,0 +1,43 @@
+package bj;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class bjgui extends JFrame{
+ 
+    public bjgui()
+    {
+        setSize(500,500);
+        setTitle("BlackJack: Players Choice");
+        Container cp = getContentPane();
+        cp.setBackground(Color.GREEN);
+        cp.setLayout(new GridLayout(2,2));
+        JLabel lbl = new JLabel("How many players are you ?");
+        cp.add(lbl);
+        JLabel emptylbl = new JLabel("");
+        cp.add(emptylbl);
+        JButton btn1 = new JButton("1 Player");
+        btn1.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        gameGUI game = new gameGUI();
+                        dispose();
+                    }
+                });
+        cp.add(btn1);
+        JButton btn2 = new JButton("2 Players");
+        btn2.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        gameGUI game = new gameGUI();
+                        dispose();
+                    }
+                });
+        cp.add(btn2);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+}
