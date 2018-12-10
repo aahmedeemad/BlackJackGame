@@ -1,0 +1,12 @@
+package bj;
+
+import javax.swing.JLabel;
+
+public class playingCards {
+    public static enum ShapeTypes{Spades,Hearts,Diamonds,Clubs};
+    public int Value;
+    public ShapeTypes Shape;
+    public String CardName;
+    public String ImageName;
+    public JLabel Holder;
+}
