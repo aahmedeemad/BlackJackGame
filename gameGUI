@@ -5,16 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Random;
-import java.util.Scanner;
 
 public class gameGUI extends JFrame{
     String DirectoryPath="C:\\Users\\Ahmed's Machine\\Documents\\NetBeansProjects\\Solitaire\\Cards";
-    static Calendar cal = Calendar.getInstance();
-    static Random r = new Random(cal.getTimeInMillis());
-    int p1score, p2score;
-    
+    Random random = new Random();
+    ArrayList<playingCards> cards = new ArrayList<playingCards>();
+    int p1score, p2score, score, index;
+
     public gameGUI(){
         setTitle("BlackJack: Game");
         GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -23,168 +21,171 @@ public class gameGUI extends JFrame{
         cp.setBackground(Color.GREEN);
         cp.setLayout(new FlowLayout());
         
-        ArrayList<playingCards> cards = new ArrayList<playingCards>();
         playingCards c1 = new playingCards();
-        c1.Value=10;
+        c1.Value=11;
         c1.CardName="Ace";
         c1.Shape=playingCards.ShapeTypes.Hearts;
         c1.ImageName=DirectoryPath+"\\"+"ace_of_hearts.png";
+        c1.Holder.setVisible(false);
         cards.add(c1);
+        c1.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(0).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(0, c1);
+        cp.add(c1.Holder);
         playingCards c2 = new playingCards();
         c2.Value=2;
         c2.CardName="Two";
         c2.Shape=playingCards.ShapeTypes.Hearts;
         c2.ImageName=DirectoryPath+"\\"+"2_of_hearts.png";
+        c2.Holder.setVisible(false);
         cards.add(c2);
+        c2.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(1).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(1, c2);
+        cp.add(c2.Holder);
         playingCards c3 = new playingCards();
         c3.Value=3;
         c3.CardName="Three";
         c3.Shape=playingCards.ShapeTypes.Hearts;
         c3.ImageName=DirectoryPath+"\\"+"3_of_hearts.png";
+        c3.Holder.setVisible(false);
         cards.add(c3);
+        c3.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(2).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(2, c3);
+        cp.add(c3.Holder);
         playingCards c4 = new playingCards();
         c4.Value=4;
         c4.CardName="Four";
         c4.Shape=playingCards.ShapeTypes.Hearts;
         c4.ImageName=DirectoryPath+"\\"+"4_of_hearts.png";
+        c4.Holder.setVisible(false);
         cards.add(c4);
+        c4.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(3).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(3, c4);
+        cp.add(c4.Holder);
         playingCards c5 = new playingCards();
-        c5.Value=10;
+        c5.Value=5;
         c5.CardName="Five";
         c5.Shape=playingCards.ShapeTypes.Hearts;
         c5.ImageName=DirectoryPath+"\\"+"5_of_hearts.png";
+        c5.Holder.setVisible(false);
         cards.add(c5);
+        c5.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(4).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(4, c5);
+        cp.add(c5.Holder);
         playingCards c6 = new playingCards();
         c6.Value=6;
         c6.CardName="Six";
         c6.Shape=playingCards.ShapeTypes.Hearts;
         c6.ImageName=DirectoryPath+"\\"+"6_of_hearts.png";
+        c6.Holder.setVisible(false);
         cards.add(c6);
+        c6.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(5).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(5, c6);
+        cp.add(c6.Holder);
         playingCards c7 = new playingCards();
         c7.Value=7;
         c7.CardName="Seven";
         c7.Shape=playingCards.ShapeTypes.Hearts;
         c7.ImageName=DirectoryPath+"\\"+"7_of_hearts.png";
+        c7.Holder.setVisible(false);
         cards.add(c7);
+        c7.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(6).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(6, c7);
+        cp.add(c7.Holder);
         playingCards c8 = new playingCards();
         c8.Value=8;
         c8.CardName="Eight";
         c8.Shape=playingCards.ShapeTypes.Hearts;
         c8.ImageName=DirectoryPath+"\\"+"8_of_hearts.png";
+        c8.Holder.setVisible(false);
         cards.add(c8);
+        c8.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(7).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(7, c8);
+        cp.add(c8.Holder);
         playingCards c9 = new playingCards();
         c9.Value=9;
         c9.CardName="Nine";
         c9.Shape=playingCards.ShapeTypes.Hearts;
         c9.ImageName=DirectoryPath+"\\"+"9_of_hearts.png";
+        c9.Holder.setVisible(false);
         cards.add(c9);
+        c9.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(8).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(8, c9);
+        cp.add(c9.Holder);
         playingCards c10 = new playingCards();
         c10.Value=10;
         c10.CardName="Ten";
         c10.Shape=playingCards.ShapeTypes.Hearts;
         c10.ImageName=DirectoryPath+"\\"+"10_of_hearts.png";
+        c10.Holder.setVisible(false);
         cards.add(c10);
+        c10.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(9).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(9, c10);
+        cp.add(c10.Holder);
         playingCards c11 = new playingCards();
         c11.Value=10;
         c11.CardName="Jack";
         c11.Shape=playingCards.ShapeTypes.Hearts;
         c11.ImageName=DirectoryPath+"\\"+"jack_of_hearts2.png";
+        c11.Holder.setVisible(false);
         cards.add(c11);
+        c11.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(10).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(10, c11);
+        cp.add(c11.Holder);
         playingCards c12 = new playingCards();
         c12.Value=10;
         c12.CardName="Queen";
         c12.Shape=playingCards.ShapeTypes.Hearts;
         c12.ImageName=DirectoryPath+"\\"+"queen_of_hearts2.png";
+        c12.Holder.setVisible(false);
         cards.add(c12);        
+        c12.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(11).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(11, c12);
+        cp.add(c12.Holder);
         playingCards c13 = new playingCards();
         c13.Value=10;
         c13.CardName="King";
         c13.Shape=playingCards.ShapeTypes.Hearts;
         c13.ImageName=DirectoryPath+"\\"+"king_of_hearts2.png";
+        c13.Holder.setVisible(false);
         cards.add(c13);        
+        c13.Holder.setIcon(new ImageIcon(new ImageIcon(cards.get(12).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
+        cards.set(12, c13);
+        cp.add(c13.Holder);
         
-        JLabel Ace = new JLabel();
-        Ace.setIcon(new ImageIcon(new ImageIcon(cards.get(0).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(Ace);
-        JLabel card2 = new JLabel();
-        card2.setIcon(new ImageIcon(new ImageIcon(cards.get(1).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(card2);
-        JLabel card3 = new JLabel();
-        card3.setIcon(new ImageIcon(new ImageIcon(cards.get(2).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(card3);
-        JLabel card4 = new JLabel();
-        card4.setIcon(new ImageIcon(new ImageIcon(cards.get(3).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(card4);
-        JLabel card5 = new JLabel();
-        card5.setIcon(new ImageIcon(new ImageIcon(cards.get(4).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(card5);
-        JLabel card6 = new JLabel();
-        card6.setIcon(new ImageIcon(new ImageIcon(cards.get(5).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(card6);
-        JLabel card7 = new JLabel();
-        card7.setIcon(new ImageIcon(new ImageIcon(cards.get(6).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(card7);
-        JLabel card8 = new JLabel();
-        card8.setIcon(new ImageIcon(new ImageIcon(cards.get(7).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(card8);
-        JLabel card9 = new JLabel();
-        card9.setIcon(new ImageIcon(new ImageIcon(cards.get(8).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(card9);
-        JLabel card10 = new JLabel();
-        card10.setIcon(new ImageIcon(new ImageIcon(cards.get(9).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(card10);
-        JLabel Jack = new JLabel();
-        Jack.setIcon(new ImageIcon(new ImageIcon(cards.get(10).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(Jack);
-        JLabel Queen = new JLabel();
-        Queen.setIcon(new ImageIcon(new ImageIcon(cards.get(11).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(Queen);
-        JLabel King = new JLabel();
-        King.setIcon(new ImageIcon(new ImageIcon(cards.get(12).ImageName).getImage().getScaledInstance(240, 320, Image.SCALE_DEFAULT)));
-        cp.add(King);
-        
-        JLabel emptylbl = new JLabel("");
-        cp.add(emptylbl);
+        JLabel scorelbl = new JLabel("Score: " + getScore() + " points.");
+        cp.add(scorelbl);
         
         JButton btn1 = new JButton("Draw Card");
         btn1.addActionListener(new ActionListener() {
                     @Override
-                    public void actionPerformed(ActionEvent e) {
-                        int card = r.nextInt(13) + 1;
-                        if(card == 1)
+                    public void actionPerformed(ActionEvent e)
+                    {
+                        if (score < 21)
                         {
-
-                            card = 11;
+                            cards.get(getIndex()).Holder.setVisible(true);
+                            JOptionPane.showMessageDialog(null, "You drew a " + drawCard(score, scorelbl, index) + ".");
+                            if(score == 21)
+                            {
+                                JOptionPane.showMessageDialog(null, "Congratulations, you got 21 points!");
+                            }
+                            else if(score > 21)
+                            {
+                                JOptionPane.showMessageDialog(null, "Ops, you got too many points");
+                            }
                         }
-                        else if(card > 10)
+                        else
                         {
-                            card = 10;
-                        }
-                        //return card;
-                        int newCard = drawCard();
-                        //cards.add(newCard);
-                        JOptionPane.showMessageDialog(null, "You drew a " + newCard + ".");
-                        if(cardsTotal(cards) == 21)
-                        {
-                          JOptionPane.showMessageDialog(null, "Congratulations, you got 21!");
-                        }
-                        else if(cardsTotal(cards) > 21)
-                        {
-                          JOptionPane.showMessageDialog(null, "Whoops, you have too many points");
-                        }
-                        else {
-                          JOptionPane.showMessageDialog(null, "You currently have " + cardsTotal(cards) + " cards. Press 1 or 2 again");
-                          //playCards(cards);
+                            JOptionPane.showMessageDialog(null, "You can't draw anymore, you got too many points!");
                         }
                     }
                 });
-        
         cp.add(btn1);
+        
         JButton btn2 = new JButton("Leave");
         btn2.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        //JOptionPane.showMessageDialog(null, "Your final score is " + cardsTotal(cards));
+                        JOptionPane.showMessageDialog(null, "Your final score is " + score);
                         dispose();
                     }
                 });
@@ -194,39 +195,28 @@ public class gameGUI extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
+    public int getScore() {
+        return score;
+    }
     
-  public static int drawCard()
-  {
-    int card = r.nextInt(13) + 1;
-    if(card == 1)
-    {
-      card = 11;
+    public void setScore(int score) {
+        this.score = score;
     }
-    else if(card > 10)
-    {
-      card = 10;
+    
+    public int getIndex() {
+        return index;
     }
-    return card;
-  }
-
-  public static ArrayList<Integer> drawTwo()
-  {
-    ArrayList<Integer> cards = new ArrayList<Integer>();
-    for(int i = 0; i < 2; i++)
-    {
-      cards.add(drawCard());
+    
+    public void setIndex(int index) {
+        this.index = index;
     }
-    return cards;
-  }
-
-  public static int cardsTotal(ArrayList<Integer> cards)
-  {
-    int total = 0;
-    for(int card :cards)
+    
+    public int drawCard(int score, JLabel scorelbl, int index)
     {
-      total += card;
+        setIndex(random.nextInt(cards.size()));
+        setScore(score + cards.get(index).Value);
+        scorelbl.setText("Score: " + getScore() + " points.");
+        return cards.get(index).Value;
     }
-    return total;
-  }
 
 }
