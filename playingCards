@@ -9,4 +9,54 @@ public class playingCards {
     public String CardName;
     public String ImageName;
     public JLabel Holder;
+
+    public playingCards() 
+    {
+        Value = 0;
+        Shape = null;
+        CardName = "";
+        ImageName = "";
+        Holder = new JLabel();
+    }
+
+    public int getValue() {
+        return Value;
+    }
+
+    public void setValue(int Value) {
+        this.Value = Value;
+    }
+
+    public ShapeTypes getShape() {
+        return Shape;
+    }
+
+    public void setShape(ShapeTypes Shape) {
+        this.Shape = Shape;
+    }
+
+    public String getCardName() {
+        return CardName;
+    }
+
+    public void setCardName(String CardName) {
+        this.CardName = CardName;
+    }
+
+    public String getImageName() {
+        return ImageName;
+    }
+
+    public void setImageName(String ImageName) {
+        this.ImageName = ImageName;
+    }
+
+    public JLabel getHolder() {
+        return Holder;
+    }
+
+    public void setHolder(JLabel Holder) {
+        this.Holder = Holder;
+    }
+    
 }
